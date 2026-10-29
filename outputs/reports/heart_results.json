@@ -1,0 +1,499 @@
+{
+  "disease": "heart",
+  "title": "Heart Disease",
+  "class_names": [
+    "No heart disease",
+    "Heart disease"
+  ],
+  "source": "UCI Machine Learning Repository - Heart Disease (Cleveland database)",
+  "source_url": "https://archive.ics.uci.edu/dataset/45/heart+disease",
+  "positive_meaning": "Heart disease present (UCI attribute 'num' > 0)",
+  "raw_info": {
+    "shape": [
+      303,
+      14
+    ],
+    "columns": [
+      "age",
+      "sex",
+      "cp",
+      "trestbps",
+      "chol",
+      "fbs",
+      "restecg",
+      "thalach",
+      "exang",
+      "oldpeak",
+      "slope",
+      "ca",
+      "thal",
+      "target"
+    ],
+    "dtypes": {
+      "age": "float64",
+      "sex": "float64",
+      "cp": "float64",
+      "trestbps": "float64",
+      "chol": "float64",
+      "fbs": "float64",
+      "restecg": "float64",
+      "thalach": "float64",
+      "exang": "float64",
+      "oldpeak": "float64",
+      "slope": "float64",
+      "ca": "float64",
+      "thal": "float64",
+      "target": "int64"
+    },
+    "missing": {
+      "age": 0,
+      "sex": 0,
+      "cp": 0,
+      "trestbps": 0,
+      "chol": 0,
+      "fbs": 0,
+      "restecg": 0,
+      "thalach": 0,
+      "exang": 0,
+      "oldpeak": 0,
+      "slope": 0,
+      "ca": 4,
+      "thal": 2,
+      "target": 0
+    },
+    "duplicates": 0
+  },
+  "cleaning_log": {
+    "rows_raw": 303,
+    "zero_marked_missing": {},
+    "out_of_range_marked_missing": {},
+    "rows_without_target_dropped": 0,
+    "duplicates_removed": 0,
+    "rows_clean": 303,
+    "missing_after_cleaning": {
+      "ca": 4,
+      "thal": 2
+    }
+  },
+  "eda_notes": [
+    "Class balance: 139 of 303 records (45.9%) are 'Heart disease' and 164 are 'No heart disease' - the data is roughly balanced (ratio 1.18:1). Recall, F1 and ROC-AUC are reported alongside accuracy for this reason.",
+    "Median age is 58.0 years for 'Heart disease' versus 52.0 years for 'No heart disease'.",
+    "Features most correlated with the target: thal (r=+0.53), ca (r=+0.46), exang (r=+0.43), oldpeak (r=+0.42). Correlation describes association in this dataset, not cause and effect; categorical codes (e.g. chest pain type) are treated as numbers here, so their correlation is only approximate.",
+    "Strongest correlation between two shown features: oldpeak and slope (r=+0.58). Highly correlated features carry overlapping information, which matters when reading coefficients or importances."
+  ],
+  "class_counts": {
+    "negative": 164,
+    "positive": 139
+  },
+  "split": {
+    "train": 242,
+    "test": 61
+  },
+  "tuned": {
+    "Logistic Regression": {
+      "metrics": {
+        "accuracy": 0.8688524590163934,
+        "precision": 0.8125,
+        "recall": 0.9285714285714286,
+        "f1": 0.8666666666666667,
+        "roc_auc": 0.9610389610389611
+      },
+      "confusion_matrix": [
+        [
+          27,
+          6
+        ],
+        [
+          2,
+          26
+        ]
+      ],
+      "report": "                  precision    recall  f1-score   support\n\nNo heart disease       0.93      0.82      0.87        33\n   Heart disease       0.81      0.93      0.87        28\n\n        accuracy                           0.87        61\n       macro avg       0.87      0.87      0.87        61\n    weighted avg       0.88      0.87      0.87        61\n"
+    },
+    "SVM": {
+      "metrics": {
+        "accuracy": 0.8524590163934426,
+        "precision": 0.7878787878787878,
+        "recall": 0.9285714285714286,
+        "f1": 0.8524590163934426,
+        "roc_auc": 0.9512987012987013
+      },
+      "confusion_matrix": [
+        [
+          26,
+          7
+        ],
+        [
+          2,
+          26
+        ]
+      ],
+      "report": "                  precision    recall  f1-score   support\n\nNo heart disease       0.93      0.79      0.85        33\n   Heart disease       0.79      0.93      0.85        28\n\n        accuracy                           0.85        61\n       macro avg       0.86      0.86      0.85        61\n    weighted avg       0.86      0.85      0.85        61\n"
+    },
+    "Random Forest": {
+      "metrics": {
+        "accuracy": 0.8852459016393442,
+        "precision": 0.8387096774193549,
+        "recall": 0.9285714285714286,
+        "f1": 0.8813559322033898,
+        "roc_auc": 0.946969696969697
+      },
+      "confusion_matrix": [
+        [
+          28,
+          5
+        ],
+        [
+          2,
+          26
+        ]
+      ],
+      "report": "                  precision    recall  f1-score   support\n\nNo heart disease       0.93      0.85      0.89        33\n   Heart disease       0.84      0.93      0.88        28\n\n        accuracy                           0.89        61\n       macro avg       0.89      0.89      0.89        61\n    weighted avg       0.89      0.89      0.89        61\n"
+    },
+    "XGBoost": {
+      "metrics": {
+        "accuracy": 0.8852459016393442,
+        "precision": 0.8620689655172413,
+        "recall": 0.8928571428571429,
+        "f1": 0.8771929824561403,
+        "roc_auc": 0.9480519480519481
+      },
+      "confusion_matrix": [
+        [
+          29,
+          4
+        ],
+        [
+          3,
+          25
+        ]
+      ],
+      "report": "                  precision    recall  f1-score   support\n\nNo heart disease       0.91      0.88      0.89        33\n   Heart disease       0.86      0.89      0.88        28\n\n        accuracy                           0.89        61\n       macro avg       0.88      0.89      0.88        61\n    weighted avg       0.89      0.89      0.89        61\n"
+    }
+  },
+  "baseline": {
+    "Logistic Regression": {
+      "metrics": {
+        "accuracy": 0.8688524590163934,
+        "precision": 0.8125,
+        "recall": 0.9285714285714286,
+        "f1": 0.8666666666666667,
+        "roc_auc": 0.9577922077922079
+      },
+      "confusion_matrix": [
+        [
+          27,
+          6
+        ],
+        [
+          2,
+          26
+        ]
+      ],
+      "report": "                  precision    recall  f1-score   support\n\nNo heart disease       0.93      0.82      0.87        33\n   Heart disease       0.81      0.93      0.87        28\n\n        accuracy                           0.87        61\n       macro avg       0.87      0.87      0.87        61\n    weighted avg       0.88      0.87      0.87        61\n"
+    },
+    "SVM": {
+      "metrics": {
+        "accuracy": 0.9016393442622951,
+        "precision": 0.84375,
+        "recall": 0.9642857142857143,
+        "f1": 0.9,
+        "roc_auc": 0.9556277056277056
+      },
+      "confusion_matrix": [
+        [
+          28,
+          5
+        ],
+        [
+          1,
+          27
+        ]
+      ],
+      "report": "                  precision    recall  f1-score   support\n\nNo heart disease       0.97      0.85      0.90        33\n   Heart disease       0.84      0.96      0.90        28\n\n        accuracy                           0.90        61\n       macro avg       0.90      0.91      0.90        61\n    weighted avg       0.91      0.90      0.90        61\n"
+    },
+    "Random Forest": {
+      "metrics": {
+        "accuracy": 0.9016393442622951,
+        "precision": 0.84375,
+        "recall": 0.9642857142857143,
+        "f1": 0.9,
+        "roc_auc": 0.9366883116883117
+      },
+      "confusion_matrix": [
+        [
+          28,
+          5
+        ],
+        [
+          1,
+          27
+        ]
+      ],
+      "report": "                  precision    recall  f1-score   support\n\nNo heart disease       0.97      0.85      0.90        33\n   Heart disease       0.84      0.96      0.90        28\n\n        accuracy                           0.90        61\n       macro avg       0.90      0.91      0.90        61\n    weighted avg       0.91      0.90      0.90        61\n"
+    },
+    "XGBoost": {
+      "metrics": {
+        "accuracy": 0.8688524590163934,
+        "precision": 0.8125,
+        "recall": 0.9285714285714286,
+        "f1": 0.8666666666666667,
+        "roc_auc": 0.9274891774891775
+      },
+      "confusion_matrix": [
+        [
+          27,
+          6
+        ],
+        [
+          2,
+          26
+        ]
+      ],
+      "report": "                  precision    recall  f1-score   support\n\nNo heart disease       0.93      0.82      0.87        33\n   Heart disease       0.81      0.93      0.87        28\n\n        accuracy                           0.87        61\n       macro avg       0.87      0.87      0.87        61\n    weighted avg       0.88      0.87      0.87        61\n"
+    }
+  },
+  "best_params": {
+    "Logistic Regression": {
+      "C": 0.1
+    },
+    "SVM": {
+      "C": 1,
+      "gamma": 0.01
+    },
+    "Random Forest": {
+      "max_depth": null,
+      "min_samples_leaf": 3,
+      "n_estimators": 400
+    },
+    "XGBoost": {
+      "learning_rate": 0.05,
+      "max_depth": 3,
+      "n_estimators": 100
+    }
+  },
+  "selection": {
+    "Logistic Regression": {
+      "cv_roc_auc": 0.9095852617591748,
+      "cv_recall": 0.800790513833992,
+      "cv_f1": 0.822870265146366,
+      "selection_score": 0.8444153469131775
+    },
+    "SVM": {
+      "cv_roc_auc": 0.9033692555431687,
+      "cv_recall": 0.773913043478261,
+      "cv_f1": 0.8109120135004867,
+      "selection_score": 0.8293981041739721
+    },
+    "Random Forest": {
+      "cv_roc_auc": 0.8981121133295048,
+      "cv_recall": 0.791699604743083,
+      "cv_f1": 0.7872668773883097,
+      "selection_score": 0.8256928651536325
+    },
+    "XGBoost": {
+      "cv_roc_auc": 0.8693383106426584,
+      "cv_recall": 0.783399209486166,
+      "cv_f1": 0.7654640728136876,
+      "selection_score": 0.8060671976475041
+    }
+  },
+  "best_model": "Logistic Regression",
+  "selection_rule": "highest mean of cross-validated ROC-AUC, recall and F1 on the training split (test set not used for selection)",
+  "permutation_importance": [
+    {
+      "feature": "ca",
+      "mean": 0.0814935064935066,
+      "std": 0.023206905556504443
+    },
+    {
+      "feature": "cp",
+      "mean": 0.027272727272727382,
+      "std": 0.009881136112998555
+    },
+    {
+      "feature": "exang",
+      "mean": 0.019047619047619146,
+      "std": 0.00899245804235538
+    },
+    {
+      "feature": "oldpeak",
+      "mean": 0.014285714285714379,
+      "std": 0.0038659244804094607
+    },
+    {
+      "feature": "thal",
+      "mean": 0.010497835497835584,
+      "std": 0.0075144395397575385
+    },
+    {
+      "feature": "thalach",
+      "mean": 0.00898268398268407,
+      "std": 0.008872478925999818
+    },
+    {
+      "feature": "sex",
+      "mean": 0.007900432900433008,
+      "std": 0.011515171858199018
+    },
+    {
+      "feature": "slope",
+      "mean": 0.007359307359307454,
+      "std": 0.006453701954924512
+    },
+    {
+      "feature": "trestbps",
+      "mean": 0.0029220779220779924,
+      "std": 0.0039926118497179055
+    },
+    {
+      "feature": "fbs",
+      "mean": 0.0011904761904762418,
+      "std": 0.0022415925516458906
+    },
+    {
+      "feature": "restecg",
+      "mean": 0.0011904761904762307,
+      "std": 0.002441669734346003
+    },
+    {
+      "feature": "age",
+      "mean": 0.0,
+      "std": 0.0
+    },
+    {
+      "feature": "chol",
+      "mean": -0.0014069264069263231,
+      "std": 0.002653171141153949
+    }
+  ],
+  "random_forest_importance": [
+    {
+      "feature": "thal_3.0",
+      "importance": 0.12096554258598571
+    },
+    {
+      "feature": "ca",
+      "importance": 0.10769791095302007
+    },
+    {
+      "feature": "thal_7.0",
+      "importance": 0.10493703884963004
+    },
+    {
+      "feature": "cp_4.0",
+      "importance": 0.10123938032002706
+    },
+    {
+      "feature": "thalach",
+      "importance": 0.09754024353163425
+    },
+    {
+      "feature": "oldpeak",
+      "importance": 0.07445789428362307
+    },
+    {
+      "feature": "age",
+      "importance": 0.060797128656420334
+    },
+    {
+      "feature": "chol",
+      "importance": 0.0509676120758866
+    },
+    {
+      "feature": "exang",
+      "importance": 0.046046623309322736
+    },
+    {
+      "feature": "trestbps",
+      "importance": 0.044679935378747995
+    },
+    {
+      "feature": "sex",
+      "importance": 0.04418558918252322
+    },
+    {
+      "feature": "slope_1.0",
+      "importance": 0.040117692197364156
+    },
+    {
+      "feature": "slope_2.0",
+      "importance": 0.028640425388085
+    },
+    {
+      "feature": "cp_3.0",
+      "importance": 0.0201644296061407
+    },
+    {
+      "feature": "restecg_2.0",
+      "importance": 0.014184490584900546
+    }
+  ],
+  "logistic_regression_coefficients": [
+    {
+      "feature": "ca",
+      "coefficient": 0.7131258490704885
+    },
+    {
+      "feature": "cp_4.0",
+      "coefficient": 0.5231852453445454
+    },
+    {
+      "feature": "sex",
+      "coefficient": 0.49380592604683476
+    },
+    {
+      "feature": "thal_7.0",
+      "coefficient": 0.47500121983537436
+    },
+    {
+      "feature": "thal_3.0",
+      "coefficient": -0.4433523786860666
+    },
+    {
+      "feature": "exang",
+      "coefficient": 0.3231934708573884
+    },
+    {
+      "feature": "thalach",
+      "coefficient": -0.3187769125121769
+    },
+    {
+      "feature": "slope_2.0",
+      "coefficient": 0.3052090094842173
+    },
+    {
+      "feature": "cp_3.0",
+      "coefficient": -0.2729556597926761
+    },
+    {
+      "feature": "slope_1.0",
+      "coefficient": -0.26126396020640774
+    },
+    {
+      "feature": "oldpeak",
+      "coefficient": 0.20489672164005418
+    },
+    {
+      "feature": "cp_1.0",
+      "coefficient": -0.19620102485328414
+    },
+    {
+      "feature": "trestbps",
+      "coefficient": 0.18000151987852406
+    },
+    {
+      "feature": "restecg_2.0",
+      "coefficient": 0.1391324242667177
+    },
+    {
+      "feature": "chol",
+      "coefficient": 0.13576998942726057
+    }
+  ],
+  "skipped_models": {},
+  "tuning_enabled": true,
+  "threshold": 0.5,
+  "trained_at": "2026-10-26T21:02:29",
+  "seconds": 16.1
+}

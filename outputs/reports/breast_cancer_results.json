@@ -1,0 +1,631 @@
+{
+  "disease": "breast_cancer",
+  "title": "Breast Cancer",
+  "class_names": [
+    "Benign",
+    "Malignant"
+  ],
+  "source": "UCI Machine Learning Repository - Breast Cancer Wisconsin (Diagnostic), bundled with scikit-learn",
+  "source_url": "https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic",
+  "positive_meaning": "Malignant tumour (label flipped so that 1 = malignant)",
+  "raw_info": {
+    "shape": [
+      569,
+      31
+    ],
+    "columns": [
+      "mean radius",
+      "mean texture",
+      "mean perimeter",
+      "mean area",
+      "mean smoothness",
+      "mean compactness",
+      "mean concavity",
+      "mean concave points",
+      "mean symmetry",
+      "mean fractal dimension",
+      "radius error",
+      "texture error",
+      "perimeter error",
+      "area error",
+      "smoothness error",
+      "compactness error",
+      "concavity error",
+      "concave points error",
+      "symmetry error",
+      "fractal dimension error",
+      "worst radius",
+      "worst texture",
+      "worst perimeter",
+      "worst area",
+      "worst smoothness",
+      "worst compactness",
+      "worst concavity",
+      "worst concave points",
+      "worst symmetry",
+      "worst fractal dimension",
+      "target"
+    ],
+    "dtypes": {
+      "mean radius": "float64",
+      "mean texture": "float64",
+      "mean perimeter": "float64",
+      "mean area": "float64",
+      "mean smoothness": "float64",
+      "mean compactness": "float64",
+      "mean concavity": "float64",
+      "mean concave points": "float64",
+      "mean symmetry": "float64",
+      "mean fractal dimension": "float64",
+      "radius error": "float64",
+      "texture error": "float64",
+      "perimeter error": "float64",
+      "area error": "float64",
+      "smoothness error": "float64",
+      "compactness error": "float64",
+      "concavity error": "float64",
+      "concave points error": "float64",
+      "symmetry error": "float64",
+      "fractal dimension error": "float64",
+      "worst radius": "float64",
+      "worst texture": "float64",
+      "worst perimeter": "float64",
+      "worst area": "float64",
+      "worst smoothness": "float64",
+      "worst compactness": "float64",
+      "worst concavity": "float64",
+      "worst concave points": "float64",
+      "worst symmetry": "float64",
+      "worst fractal dimension": "float64",
+      "target": "int64"
+    },
+    "missing": {
+      "mean radius": 0,
+      "mean texture": 0,
+      "mean perimeter": 0,
+      "mean area": 0,
+      "mean smoothness": 0,
+      "mean compactness": 0,
+      "mean concavity": 0,
+      "mean concave points": 0,
+      "mean symmetry": 0,
+      "mean fractal dimension": 0,
+      "radius error": 0,
+      "texture error": 0,
+      "perimeter error": 0,
+      "area error": 0,
+      "smoothness error": 0,
+      "compactness error": 0,
+      "concavity error": 0,
+      "concave points error": 0,
+      "symmetry error": 0,
+      "fractal dimension error": 0,
+      "worst radius": 0,
+      "worst texture": 0,
+      "worst perimeter": 0,
+      "worst area": 0,
+      "worst smoothness": 0,
+      "worst compactness": 0,
+      "worst concavity": 0,
+      "worst concave points": 0,
+      "worst symmetry": 0,
+      "worst fractal dimension": 0,
+      "target": 0
+    },
+    "duplicates": 0
+  },
+  "cleaning_log": {
+    "rows_raw": 569,
+    "zero_marked_missing": {},
+    "out_of_range_marked_missing": {},
+    "rows_without_target_dropped": 0,
+    "duplicates_removed": 0,
+    "rows_clean": 569,
+    "missing_after_cleaning": {}
+  },
+  "eda_notes": [
+    "Class balance: 212 of 569 records (37.3%) are 'Malignant' and 357 are 'Benign' - the data is moderately imbalanced (ratio 1.68:1). Recall, F1 and ROC-AUC are reported alongside accuracy for this reason.",
+    "Features most correlated with the target: worst concave points (r=+0.79), worst perimeter (r=+0.78), mean concave points (r=+0.78), worst radius (r=+0.78). Correlation describes association in this dataset, not cause and effect; categorical codes (e.g. chest pain type) are treated as numbers here, so their correlation is only approximate.",
+    "Strongest correlation between two shown features: mean perimeter and mean radius (r=+1.00). Highly correlated features carry overlapping information, which matters when reading coefficients or importances."
+  ],
+  "class_counts": {
+    "negative": 357,
+    "positive": 212
+  },
+  "split": {
+    "train": 455,
+    "test": 114
+  },
+  "tuned": {
+    "Logistic Regression": {
+      "metrics": {
+        "accuracy": 0.9736842105263158,
+        "precision": 0.975609756097561,
+        "recall": 0.9523809523809523,
+        "f1": 0.963855421686747,
+        "roc_auc": 0.9953703703703703
+      },
+      "confusion_matrix": [
+        [
+          71,
+          1
+        ],
+        [
+          2,
+          40
+        ]
+      ],
+      "report": "              precision    recall  f1-score   support\n\n      Benign       0.97      0.99      0.98        72\n   Malignant       0.98      0.95      0.96        42\n\n    accuracy                           0.97       114\n   macro avg       0.97      0.97      0.97       114\nweighted avg       0.97      0.97      0.97       114\n"
+    },
+    "SVM": {
+      "metrics": {
+        "accuracy": 0.9824561403508771,
+        "precision": 1.0,
+        "recall": 0.9523809523809523,
+        "f1": 0.975609756097561,
+        "roc_auc": 0.9970238095238095
+      },
+      "confusion_matrix": [
+        [
+          72,
+          0
+        ],
+        [
+          2,
+          40
+        ]
+      ],
+      "report": "              precision    recall  f1-score   support\n\n      Benign       0.97      1.00      0.99        72\n   Malignant       1.00      0.95      0.98        42\n\n    accuracy                           0.98       114\n   macro avg       0.99      0.98      0.98       114\nweighted avg       0.98      0.98      0.98       114\n"
+    },
+    "Random Forest": {
+      "metrics": {
+        "accuracy": 0.9736842105263158,
+        "precision": 1.0,
+        "recall": 0.9285714285714286,
+        "f1": 0.9629629629629629,
+        "roc_auc": 0.9976851851851852
+      },
+      "confusion_matrix": [
+        [
+          72,
+          0
+        ],
+        [
+          3,
+          39
+        ]
+      ],
+      "report": "              precision    recall  f1-score   support\n\n      Benign       0.96      1.00      0.98        72\n   Malignant       1.00      0.93      0.96        42\n\n    accuracy                           0.97       114\n   macro avg       0.98      0.96      0.97       114\nweighted avg       0.97      0.97      0.97       114\n"
+    },
+    "XGBoost": {
+      "metrics": {
+        "accuracy": 0.9649122807017544,
+        "precision": 1.0,
+        "recall": 0.9047619047619048,
+        "f1": 0.95,
+        "roc_auc": 0.9937169312169313
+      },
+      "confusion_matrix": [
+        [
+          72,
+          0
+        ],
+        [
+          4,
+          38
+        ]
+      ],
+      "report": "              precision    recall  f1-score   support\n\n      Benign       0.95      1.00      0.97        72\n   Malignant       1.00      0.90      0.95        42\n\n    accuracy                           0.96       114\n   macro avg       0.97      0.95      0.96       114\nweighted avg       0.97      0.96      0.96       114\n"
+    }
+  },
+  "baseline": {
+    "Logistic Regression": {
+      "metrics": {
+        "accuracy": 0.9736842105263158,
+        "precision": 0.975609756097561,
+        "recall": 0.9523809523809523,
+        "f1": 0.963855421686747,
+        "roc_auc": 0.9953703703703703
+      },
+      "confusion_matrix": [
+        [
+          71,
+          1
+        ],
+        [
+          2,
+          40
+        ]
+      ],
+      "report": "              precision    recall  f1-score   support\n\n      Benign       0.97      0.99      0.98        72\n   Malignant       0.98      0.95      0.96        42\n\n    accuracy                           0.97       114\n   macro avg       0.97      0.97      0.97       114\nweighted avg       0.97      0.97      0.97       114\n"
+    },
+    "SVM": {
+      "metrics": {
+        "accuracy": 0.9824561403508771,
+        "precision": 0.9761904761904762,
+        "recall": 0.9761904761904762,
+        "f1": 0.9761904761904762,
+        "roc_auc": 0.9953703703703705
+      },
+      "confusion_matrix": [
+        [
+          71,
+          1
+        ],
+        [
+          1,
+          41
+        ]
+      ],
+      "report": "              precision    recall  f1-score   support\n\n      Benign       0.99      0.99      0.99        72\n   Malignant       0.98      0.98      0.98        42\n\n    accuracy                           0.98       114\n   macro avg       0.98      0.98      0.98       114\nweighted avg       0.98      0.98      0.98       114\n"
+    },
+    "Random Forest": {
+      "metrics": {
+        "accuracy": 0.9736842105263158,
+        "precision": 1.0,
+        "recall": 0.9285714285714286,
+        "f1": 0.9629629629629629,
+        "roc_auc": 0.9976851851851852
+      },
+      "confusion_matrix": [
+        [
+          72,
+          0
+        ],
+        [
+          3,
+          39
+        ]
+      ],
+      "report": "              precision    recall  f1-score   support\n\n      Benign       0.96      1.00      0.98        72\n   Malignant       1.00      0.93      0.96        42\n\n    accuracy                           0.97       114\n   macro avg       0.98      0.96      0.97       114\nweighted avg       0.97      0.97      0.97       114\n"
+    },
+    "XGBoost": {
+      "metrics": {
+        "accuracy": 0.9824561403508771,
+        "precision": 1.0,
+        "recall": 0.9523809523809523,
+        "f1": 0.975609756097561,
+        "roc_auc": 0.9910714285714285
+      },
+      "confusion_matrix": [
+        [
+          72,
+          0
+        ],
+        [
+          2,
+          40
+        ]
+      ],
+      "report": "              precision    recall  f1-score   support\n\n      Benign       0.97      1.00      0.99        72\n   Malignant       1.00      0.95      0.98        42\n\n    accuracy                           0.98       114\n   macro avg       0.99      0.98      0.98       114\nweighted avg       0.98      0.98      0.98       114\n"
+    }
+  },
+  "best_params": {
+    "Logistic Regression": {
+      "C": 1
+    },
+    "SVM": {
+      "C": 10,
+      "gamma": 0.01
+    },
+    "Random Forest": {
+      "max_depth": null,
+      "min_samples_leaf": 1,
+      "n_estimators": 200
+    },
+    "XGBoost": {
+      "learning_rate": 0.1,
+      "max_depth": 3,
+      "n_estimators": 200
+    }
+  },
+  "selection": {
+    "Logistic Regression": {
+      "cv_roc_auc": 0.9953560371517026,
+      "cv_recall": 0.9588235294117646,
+      "cv_f1": 0.9616227164572395,
+      "selection_score": 0.9719340943402356
+    },
+    "SVM": {
+      "cv_roc_auc": 0.9956656346749225,
+      "cv_recall": 0.9588235294117646,
+      "cv_f1": 0.9730241897406076,
+      "selection_score": 0.9758377846090983
+    },
+    "Random Forest": {
+      "cv_roc_auc": 0.9898348813209494,
+      "cv_recall": 0.9470588235294117,
+      "cv_f1": 0.9443269585575956,
+      "selection_score": 0.9604068878026523
+    },
+    "XGBoost": {
+      "cv_roc_auc": 0.9940144478844168,
+      "cv_recall": 0.9588235294117646,
+      "cv_f1": 0.9617131732641141,
+      "selection_score": 0.9715170501867653
+    }
+  },
+  "best_model": "SVM",
+  "selection_rule": "highest mean of cross-validated ROC-AUC, recall and F1 on the training split (test set not used for selection)",
+  "permutation_importance": [
+    {
+      "feature": "worst texture",
+      "mean": 0.006977513227513254,
+      "std": 0.004086236612339724
+    },
+    {
+      "feature": "worst concavity",
+      "mean": 0.004695767195767209,
+      "std": 0.002294887774192788
+    },
+    {
+      "feature": "worst radius",
+      "mean": 0.0029100529100529295,
+      "std": 0.0016913640016593269
+    },
+    {
+      "feature": "mean concave points",
+      "mean": 0.002678571428571441,
+      "std": 0.0020462603841805917
+    },
+    {
+      "feature": "texture error",
+      "mean": 0.0024801587301587435,
+      "std": 0.0010057477728667426
+    },
+    {
+      "feature": "worst area",
+      "mean": 0.0023809523809523838,
+      "std": 0.001345700393477214
+    },
+    {
+      "feature": "worst smoothness",
+      "mean": 0.0019510582010581977,
+      "std": 0.001301499249613359
+    },
+    {
+      "feature": "worst perimeter",
+      "mean": 0.0019510582010581867,
+      "std": 0.0012412912949155653
+    },
+    {
+      "feature": "mean concavity",
+      "mean": 0.0018849206349206503,
+      "std": 0.0016471441012450318
+    },
+    {
+      "feature": "worst concave points",
+      "mean": 0.001620370370370372,
+      "std": 0.0012055374426956562
+    },
+    {
+      "feature": "symmetry error",
+      "mean": 0.0011904761904762307,
+      "std": 0.000162003289866648
+    },
+    {
+      "feature": "worst fractal dimension",
+      "mean": 0.000992063492063533,
+      "std": 0.0004904893179296181
+    },
+    {
+      "feature": "fractal dimension error",
+      "mean": 0.0008597883597883605,
+      "std": 0.0015664972595670543
+    },
+    {
+      "feature": "mean perimeter",
+      "mean": 0.0006283068783068835,
+      "std": 0.0007312613884753956
+    },
+    {
+      "feature": "worst symmetry",
+      "mean": 0.0006283068783068724,
+      "std": 0.000997011470349318
+    },
+    {
+      "feature": "mean area",
+      "mean": 0.0006283068783068613,
+      "std": 0.0007312613884753946
+    },
+    {
+      "feature": "compactness error",
+      "mean": 0.0006283068783068613,
+      "std": 0.002692416371605132
+    },
+    {
+      "feature": "mean radius",
+      "mean": 0.0005621693121693027,
+      "std": 0.0007100168833857087
+    },
+    {
+      "feature": "mean smoothness",
+      "mean": 0.00042989417989417464,
+      "std": 0.0007401795398676828
+    },
+    {
+      "feature": "smoothness error",
+      "mean": 0.0003968253968253732,
+      "std": 0.0001322751322751614
+    },
+    {
+      "feature": "concavity error",
+      "mean": 0.0003306878306878258,
+      "std": 0.0005727681241960745
+    },
+    {
+      "feature": "radius error",
+      "mean": 0.0002645502645502784,
+      "std": 0.0011812547023473284
+    },
+    {
+      "feature": "area error",
+      "mean": 0.00023148148148148805,
+      "std": 0.0008501957759379929
+    },
+    {
+      "feature": "mean symmetry",
+      "mean": 0.00016534391534389625,
+      "std": 0.00016534391534389625
+    },
+    {
+      "feature": "mean fractal dimension",
+      "mean": 0.0001322751322751392,
+      "std": 0.0002645502645502784
+    },
+    {
+      "feature": "perimeter error",
+      "mean": 9.920634920633775e-05,
+      "std": 0.0005543338166084748
+    },
+    {
+      "feature": "concave points error",
+      "mean": -0.000132275132275117,
+      "std": 0.00021935349142559635
+    },
+    {
+      "feature": "worst compactness",
+      "mean": -0.0004960317460317553,
+      "std": 0.0006975867430465972
+    },
+    {
+      "feature": "mean compactness",
+      "mean": -0.0005952380952380821,
+      "std": 0.0007364767675701034
+    },
+    {
+      "feature": "mean texture",
+      "mean": -0.0006283068783068613,
+      "std": 0.001232450076295255
+    }
+  ],
+  "random_forest_importance": [
+    {
+      "feature": "worst perimeter",
+      "importance": 0.14416586196727368
+    },
+    {
+      "feature": "worst area",
+      "importance": 0.12932987001273333
+    },
+    {
+      "feature": "mean concave points",
+      "importance": 0.10522602707295396
+    },
+    {
+      "feature": "worst concave points",
+      "importance": 0.09572124604564193
+    },
+    {
+      "feature": "worst radius",
+      "importance": 0.07778110272798253
+    },
+    {
+      "feature": "mean concavity",
+      "importance": 0.06931396784172879
+    },
+    {
+      "feature": "mean radius",
+      "importance": 0.047119032254130264
+    },
+    {
+      "feature": "mean area",
+      "importance": 0.045136323545802465
+    },
+    {
+      "feature": "mean perimeter",
+      "importance": 0.04395189841969162
+    },
+    {
+      "feature": "worst concavity",
+      "importance": 0.04211971271642793
+    },
+    {
+      "feature": "area error",
+      "importance": 0.028945174461421006
+    },
+    {
+      "feature": "worst texture",
+      "importance": 0.017786160797436747
+    },
+    {
+      "feature": "mean compactness",
+      "importance": 0.01748938598745012
+    },
+    {
+      "feature": "worst compactness",
+      "importance": 0.016557546017832082
+    },
+    {
+      "feature": "radius error",
+      "importance": 0.013742107368474152
+    }
+  ],
+  "logistic_regression_coefficients": [
+    {
+      "feature": "worst texture",
+      "coefficient": 1.466158561174459
+    },
+    {
+      "feature": "radius error",
+      "coefficient": 1.3090007141444888
+    },
+    {
+      "feature": "worst symmetry",
+      "coefficient": 1.0769195377237823
+    },
+    {
+      "feature": "mean concave points",
+      "coefficient": 0.9699771340513741
+    },
+    {
+      "feature": "compactness error",
+      "coefficient": -0.9607946189219122
+    },
+    {
+      "feature": "worst concavity",
+      "coefficient": 0.9368873923564982
+    },
+    {
+      "feature": "area error",
+      "coefficient": 0.9353321512582963
+    },
+    {
+      "feature": "worst area",
+      "coefficient": 0.9053786502177077
+    },
+    {
+      "feature": "worst radius",
+      "coefficient": 0.9017231501393294
+    },
+    {
+      "feature": "perimeter error",
+      "coefficient": 0.7722928041295419
+    },
+    {
+      "feature": "mean concavity",
+      "coefficient": 0.768915676438833
+    },
+    {
+      "feature": "worst concave points",
+      "coefficient": 0.7426576115341947
+    },
+    {
+      "feature": "worst perimeter",
+      "coefficient": 0.7123221857464789
+    },
+    {
+      "feature": "fractal dimension error",
+      "coefficient": -0.587420847044584
+    },
+    {
+      "feature": "concave points error",
+      "coefficient": 0.5676734312210328
+    }
+  ],
+  "skipped_models": {},
+  "tuning_enabled": true,
+  "threshold": 0.5,
+  "trained_at": "2026-10-26T21:02:52",
+  "seconds": 11.5
+}

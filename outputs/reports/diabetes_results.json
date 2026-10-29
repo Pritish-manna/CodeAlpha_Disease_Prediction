@@ -1,0 +1,412 @@
+{
+  "disease": "diabetes",
+  "title": "Diabetes",
+  "class_names": [
+    "Non-diabetic",
+    "Diabetic"
+  ],
+  "source": "Pima Indians Diabetes Database (National Institute of Diabetes and Digestive and Kidney Diseases), available via UCI / OpenML",
+  "source_url": "https://www.openml.org/search?type=data&id=37",
+  "positive_meaning": "Outcome = 1 (tested positive for diabetes)",
+  "raw_info": {
+    "shape": [
+      768,
+      9
+    ],
+    "columns": [
+      "Pregnancies",
+      "Glucose",
+      "BloodPressure",
+      "SkinThickness",
+      "Insulin",
+      "BMI",
+      "DiabetesPedigreeFunction",
+      "Age",
+      "target"
+    ],
+    "dtypes": {
+      "Pregnancies": "int64",
+      "Glucose": "int64",
+      "BloodPressure": "int64",
+      "SkinThickness": "int64",
+      "Insulin": "int64",
+      "BMI": "float64",
+      "DiabetesPedigreeFunction": "float64",
+      "Age": "int64",
+      "target": "int64"
+    },
+    "missing": {
+      "Pregnancies": 0,
+      "Glucose": 0,
+      "BloodPressure": 0,
+      "SkinThickness": 0,
+      "Insulin": 0,
+      "BMI": 0,
+      "DiabetesPedigreeFunction": 0,
+      "Age": 0,
+      "target": 0
+    },
+    "duplicates": 0
+  },
+  "cleaning_log": {
+    "rows_raw": 768,
+    "zero_marked_missing": {
+      "Glucose": 5,
+      "BloodPressure": 35,
+      "SkinThickness": 227,
+      "Insulin": 374,
+      "BMI": 11
+    },
+    "out_of_range_marked_missing": {},
+    "rows_without_target_dropped": 0,
+    "duplicates_removed": 0,
+    "rows_clean": 768,
+    "missing_after_cleaning": {
+      "Glucose": 5,
+      "BloodPressure": 35,
+      "SkinThickness": 227,
+      "Insulin": 374,
+      "BMI": 11
+    }
+  },
+  "eda_notes": [
+    "Class balance: 268 of 768 records (34.9%) are 'Diabetic' and 500 are 'Non-diabetic' - the data is moderately imbalanced (ratio 1.87:1). Recall, F1 and ROC-AUC are reported alongside accuracy for this reason.",
+    "Median age is 36.0 years for 'Diabetic' versus 27.0 years for 'Non-diabetic'.",
+    "Features most correlated with the target: Glucose (r=+0.49), BMI (r=+0.31), Insulin (r=+0.30), SkinThickness (r=+0.26). Correlation describes association in this dataset, not cause and effect; categorical codes (e.g. chest pain type) are treated as numbers here, so their correlation is only approximate.",
+    "Strongest correlation between two shown features: BMI and SkinThickness (r=+0.65). Highly correlated features carry overlapping information, which matters when reading coefficients or importances."
+  ],
+  "class_counts": {
+    "negative": 500,
+    "positive": 268
+  },
+  "split": {
+    "train": 614,
+    "test": 154
+  },
+  "tuned": {
+    "Logistic Regression": {
+      "metrics": {
+        "accuracy": 0.7077922077922078,
+        "precision": 0.5714285714285714,
+        "recall": 0.6666666666666666,
+        "f1": 0.6153846153846154,
+        "roc_auc": 0.8103703703703704
+      },
+      "confusion_matrix": [
+        [
+          73,
+          27
+        ],
+        [
+          18,
+          36
+        ]
+      ],
+      "report": "              precision    recall  f1-score   support\n\nNon-diabetic       0.80      0.73      0.76       100\n    Diabetic       0.57      0.67      0.62        54\n\n    accuracy                           0.71       154\n   macro avg       0.69      0.70      0.69       154\nweighted avg       0.72      0.71      0.71       154\n"
+    },
+    "SVM": {
+      "metrics": {
+        "accuracy": 0.7077922077922078,
+        "precision": 0.6,
+        "recall": 0.5,
+        "f1": 0.5454545454545454,
+        "roc_auc": 0.8096296296296296
+      },
+      "confusion_matrix": [
+        [
+          82,
+          18
+        ],
+        [
+          27,
+          27
+        ]
+      ],
+      "report": "              precision    recall  f1-score   support\n\nNon-diabetic       0.75      0.82      0.78       100\n    Diabetic       0.60      0.50      0.55        54\n\n    accuracy                           0.71       154\n   macro avg       0.68      0.66      0.67       154\nweighted avg       0.70      0.71      0.70       154\n"
+    },
+    "Random Forest": {
+      "metrics": {
+        "accuracy": 0.7532467532467533,
+        "precision": 0.6176470588235294,
+        "recall": 0.7777777777777778,
+        "f1": 0.6885245901639344,
+        "roc_auc": 0.8222222222222222
+      },
+      "confusion_matrix": [
+        [
+          74,
+          26
+        ],
+        [
+          12,
+          42
+        ]
+      ],
+      "report": "              precision    recall  f1-score   support\n\nNon-diabetic       0.86      0.74      0.80       100\n    Diabetic       0.62      0.78      0.69        54\n\n    accuracy                           0.75       154\n   macro avg       0.74      0.76      0.74       154\nweighted avg       0.78      0.75      0.76       154\n"
+    },
+    "XGBoost": {
+      "metrics": {
+        "accuracy": 0.7402597402597403,
+        "precision": 0.6029411764705882,
+        "recall": 0.7592592592592593,
+        "f1": 0.6721311475409836,
+        "roc_auc": 0.8162962962962962
+      },
+      "confusion_matrix": [
+        [
+          73,
+          27
+        ],
+        [
+          13,
+          41
+        ]
+      ],
+      "report": "              precision    recall  f1-score   support\n\nNon-diabetic       0.85      0.73      0.78       100\n    Diabetic       0.60      0.76      0.67        54\n\n    accuracy                           0.74       154\n   macro avg       0.73      0.74      0.73       154\nweighted avg       0.76      0.74      0.75       154\n"
+    }
+  },
+  "baseline": {
+    "Logistic Regression": {
+      "metrics": {
+        "accuracy": 0.7337662337662337,
+        "precision": 0.6031746031746031,
+        "recall": 0.7037037037037037,
+        "f1": 0.6495726495726496,
+        "roc_auc": 0.8125925925925926
+      },
+      "confusion_matrix": [
+        [
+          75,
+          25
+        ],
+        [
+          16,
+          38
+        ]
+      ],
+      "report": "              precision    recall  f1-score   support\n\nNon-diabetic       0.82      0.75      0.79       100\n    Diabetic       0.60      0.70      0.65        54\n\n    accuracy                           0.73       154\n   macro avg       0.71      0.73      0.72       154\nweighted avg       0.75      0.73      0.74       154\n"
+    },
+    "SVM": {
+      "metrics": {
+        "accuracy": 0.7467532467532467,
+        "precision": 0.6595744680851063,
+        "recall": 0.5740740740740741,
+        "f1": 0.6138613861386139,
+        "roc_auc": 0.8138888888888889
+      },
+      "confusion_matrix": [
+        [
+          84,
+          16
+        ],
+        [
+          23,
+          31
+        ]
+      ],
+      "report": "              precision    recall  f1-score   support\n\nNon-diabetic       0.79      0.84      0.81       100\n    Diabetic       0.66      0.57      0.61        54\n\n    accuracy                           0.75       154\n   macro avg       0.72      0.71      0.71       154\nweighted avg       0.74      0.75      0.74       154\n"
+    },
+    "Random Forest": {
+      "metrics": {
+        "accuracy": 0.7532467532467533,
+        "precision": 0.6379310344827587,
+        "recall": 0.6851851851851852,
+        "f1": 0.6607142857142857,
+        "roc_auc": 0.8240740740740741
+      },
+      "confusion_matrix": [
+        [
+          79,
+          21
+        ],
+        [
+          17,
+          37
+        ]
+      ],
+      "report": "              precision    recall  f1-score   support\n\nNon-diabetic       0.82      0.79      0.81       100\n    Diabetic       0.64      0.69      0.66        54\n\n    accuracy                           0.75       154\n   macro avg       0.73      0.74      0.73       154\nweighted avg       0.76      0.75      0.76       154\n"
+    },
+    "XGBoost": {
+      "metrics": {
+        "accuracy": 0.7532467532467533,
+        "precision": 0.66,
+        "recall": 0.6111111111111112,
+        "f1": 0.6346153846153846,
+        "roc_auc": 0.8172222222222222
+      },
+      "confusion_matrix": [
+        [
+          83,
+          17
+        ],
+        [
+          21,
+          33
+        ]
+      ],
+      "report": "              precision    recall  f1-score   support\n\nNon-diabetic       0.80      0.83      0.81       100\n    Diabetic       0.66      0.61      0.63        54\n\n    accuracy                           0.75       154\n   macro avg       0.73      0.72      0.72       154\nweighted avg       0.75      0.75      0.75       154\n"
+    }
+  },
+  "best_params": {
+    "Logistic Regression": {
+      "C": 0.1
+    },
+    "SVM": {
+      "C": 1,
+      "gamma": 0.01
+    },
+    "Random Forest": {
+      "max_depth": 5,
+      "min_samples_leaf": 1,
+      "n_estimators": 200
+    },
+    "XGBoost": {
+      "learning_rate": 0.05,
+      "max_depth": 3,
+      "n_estimators": 100
+    }
+  },
+  "selection": {
+    "Logistic Regression": {
+      "cv_roc_auc": 0.8449944629014396,
+      "cv_recall": 0.7198228128460686,
+      "cv_f1": 0.682340495670685,
+      "selection_score": 0.7490525904727311
+    },
+    "SVM": {
+      "cv_roc_auc": 0.8492704872646734,
+      "cv_recall": 0.7150609080841639,
+      "cv_f1": 0.6775039049528366,
+      "selection_score": 0.7472784334338914
+    },
+    "Random Forest": {
+      "cv_roc_auc": 0.8386378737541529,
+      "cv_recall": 0.7522702104097453,
+      "cv_f1": 0.6854155912978495,
+      "selection_score": 0.7587745584872492
+    },
+    "XGBoost": {
+      "cv_roc_auc": 0.8229485049833887,
+      "cv_recall": 0.7289036544850498,
+      "cv_f1": 0.6715913821615823,
+      "selection_score": 0.7411478472100069
+    }
+  },
+  "best_model": "Random Forest",
+  "selection_rule": "highest mean of cross-validated ROC-AUC, recall and F1 on the training split (test set not used for selection)",
+  "permutation_importance": [
+    {
+      "feature": "Glucose",
+      "mean": 0.08025925925925921,
+      "std": 0.025595406395137306
+    },
+    {
+      "feature": "BMI",
+      "mean": 0.04899999999999997,
+      "std": 0.017013510325846387
+    },
+    {
+      "feature": "Age",
+      "mean": 0.02277777777777775,
+      "std": 0.008384615868645742
+    },
+    {
+      "feature": "DiabetesPedigreeFunction",
+      "mean": 0.011,
+      "std": 0.005481106093252254
+    },
+    {
+      "feature": "Pregnancies",
+      "mean": 0.007111111111111101,
+      "std": 0.00533076069639171
+    },
+    {
+      "feature": "Insulin",
+      "mean": 0.006925925925925902,
+      "std": 0.00587080848931764
+    },
+    {
+      "feature": "SkinThickness",
+      "mean": 0.0006111111111110734,
+      "std": 0.004047090777160012
+    },
+    {
+      "feature": "BloodPressure",
+      "mean": -0.002074074074074117,
+      "std": 0.0027314657877766328
+    }
+  ],
+  "random_forest_importance": [
+    {
+      "feature": "Glucose",
+      "importance": 0.3381872171287713
+    },
+    {
+      "feature": "BMI",
+      "importance": 0.18437421842440127
+    },
+    {
+      "feature": "Age",
+      "importance": 0.12009388023916313
+    },
+    {
+      "feature": "Insulin",
+      "importance": 0.11134859548757647
+    },
+    {
+      "feature": "DiabetesPedigreeFunction",
+      "importance": 0.08269626755034931
+    },
+    {
+      "feature": "Pregnancies",
+      "importance": 0.05852746015099627
+    },
+    {
+      "feature": "SkinThickness",
+      "importance": 0.057480937925687314
+    },
+    {
+      "feature": "BloodPressure",
+      "importance": 0.0472914230930548
+    }
+  ],
+  "logistic_regression_coefficients": [
+    {
+      "feature": "Glucose",
+      "coefficient": 1.0237797610916772
+    },
+    {
+      "feature": "BMI",
+      "coefficient": 0.598791158414515
+    },
+    {
+      "feature": "Pregnancies",
+      "coefficient": 0.3206303594820909
+    },
+    {
+      "feature": "DiabetesPedigreeFunction",
+      "coefficient": 0.25568231101047934
+    },
+    {
+      "feature": "Age",
+      "coefficient": 0.18906705166888285
+    },
+    {
+      "feature": "SkinThickness",
+      "coefficient": 0.059017822654604236
+    },
+    {
+      "feature": "BloodPressure",
+      "coefficient": 0.017363367258321348
+    },
+    {
+      "feature": "Insulin",
+      "coefficient": 0.016245550631582294
+    }
+  ],
+  "skipped_models": {},
+  "tuning_enabled": true,
+  "threshold": 0.5,
+  "trained_at": "2026-10-26T21:02:40",
+  "seconds": 9.9
+}
